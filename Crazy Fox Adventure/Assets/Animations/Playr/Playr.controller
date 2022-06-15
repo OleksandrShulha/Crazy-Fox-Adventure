@@ -424,9 +424,6 @@ AnimatorStateTransition:
     m_ConditionEvent: onGround
     m_EventTreshold: 0
   - m_ConditionMode: 3
-    m_ConditionEvent: moveX
-    m_EventTreshold: 0
-  - m_ConditionMode: 3
     m_ConditionEvent: HP
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}

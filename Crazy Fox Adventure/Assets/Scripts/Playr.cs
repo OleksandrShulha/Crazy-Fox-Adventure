@@ -76,13 +76,25 @@ public class Playr : MonoBehaviour
     private void MovePlayr()
     {
 
-        moveVector.x = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
-
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (curentPlayrHp > 0)
         {
-            rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+            moveVector.x = Input.GetAxis("Horizontal");
+            rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
+
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                //rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            }
         }
+        else
+        {
+            rb.velocity = new Vector2(0,rb.velocity.y);
+            //rb.AddForce(Vector2.up * 0);
+
+        }
+
+
     }
 
     public int CurentPlayrHealth()
