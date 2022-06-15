@@ -13,6 +13,8 @@ public class Playr : MonoBehaviour
     bool isGrounded;
     Animator anim;
     public bool faceRight = true;
+    public int maxPlayrHp = 3;
+    public int curentPlayrHp;
 
 
     // Start is called before the first frame update
@@ -20,6 +22,7 @@ public class Playr : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        curentPlayrHp = maxPlayrHp;
     }
 
     // Update is called once per frame
@@ -56,6 +59,7 @@ public class Playr : MonoBehaviour
     {
         anim.SetFloat("moveX", Mathf.Abs(moveVector.x));
         anim.SetBool("onGround", isGrounded);
+        anim.SetInteger("HP", curentPlayrHp);
 
 
         //if (Input.GetAxis("Horizontal") == 0 && (isGrounded))
@@ -71,13 +75,30 @@ public class Playr : MonoBehaviour
 
     private void MovePlayr()
     {
+
         moveVector.x = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-            //anim.SetInteger("State", 3);
+        }
+    }
+
+    public int CurentPlayrHealth()
+    {
+        return curentPlayrHp;
+    }
+
+    public void GetPlayrHealth(int deltaHp)
+    {
+     
+        if (curentPlayrHp > 0)
+            curentPlayrHp += deltaHp;
+
+        if (curentPlayrHp <= 0)
+        {
+            Debug.Log("Ded");
         }
     }
 
