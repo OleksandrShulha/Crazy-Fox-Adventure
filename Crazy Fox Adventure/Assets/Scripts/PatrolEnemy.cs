@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MushroomEnemy : MonoBehaviour
+public class PatrolEnemy : MonoBehaviour
 {
     public float speed = 3f;
     public Transform point1;
@@ -41,7 +41,6 @@ public class MushroomEnemy : MonoBehaviour
                 moveLeft = true;
             }
 
-        }   
-    }   
+        }
+    }
 }
-

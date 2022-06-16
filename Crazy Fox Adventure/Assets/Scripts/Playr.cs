@@ -15,7 +15,8 @@ public class Playr : MonoBehaviour
     public bool faceRight = true;
     public int maxPlayrHp = 3;
     public int curentPlayrHp;
-
+    public bool isHit = false;
+    public Main main;
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +44,6 @@ public class Playr : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-
-            
-    }
-
     void CheckGround()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundChek.position, 0.2f);
@@ -60,17 +55,6 @@ public class Playr : MonoBehaviour
         anim.SetFloat("moveX", Mathf.Abs(moveVector.x));
         anim.SetBool("onGround", isGrounded);
         anim.SetInteger("HP", curentPlayrHp);
-
-
-        //if (Input.GetAxis("Horizontal") == 0 && (isGrounded))
-        //    anim.SetInteger("State", 1);
-        //else if (isGrounded)
-        //    anim.SetInteger("State", 2);
-        //else if (!isGrounded)
-        //{
-        //    anim.SetInteger("State", 3);
-        //    //anim.SetInteger("State", 4);
-        //}
     }
 
     private void MovePlayr()
@@ -110,10 +94,52 @@ public class Playr : MonoBehaviour
 
         if (curentPlayrHp <= 0)
         {
-            Debug.Log("Ded");
+            Invoke("Lose", 3f);
+        }
+        if (deltaHp < 0 && (GetComponent<SpriteRenderer>().color.g == 1f))
+        {
+            isHit = true;
+            //StartCoroutine(ChangeColorOnHit());
+            OnHit();
+        }
+    }
+
+    IEnumerator ChangeColorOnHit()
+    {
+        yield return new WaitForSeconds(0.02f);
+        Debug.Log("test");
+        OnHit();
+    }
+
+
+    private void OnHit()
+    {
+        if (isHit)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1f, GetComponent<SpriteRenderer>().color.g - 0.04f, GetComponent<SpriteRenderer>().color.b - 0.04f);
+            if (GetComponent<SpriteRenderer>().color.g <= 0)
+            {
+                isHit = false;
+            }
+            StartCoroutine(ChangeColorOnHit());
+
+        }
+
+        while (!isHit && (GetComponent<SpriteRenderer>().color.g < 1f))
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1f, GetComponent<SpriteRenderer>().color.g + 0.04f, GetComponent<SpriteRenderer>().color.b + 0.04f);
+            if (GetComponent<SpriteRenderer>().color.g >= 1f || (curentPlayrHp <= 0))
+            {
+                break;
+            }
+            StartCoroutine(ChangeColorOnHit());
         }
     }
 
 
+    void Lose()
+    {
+        main.GetComponent<Main>().Lose();
+    }
 
 }

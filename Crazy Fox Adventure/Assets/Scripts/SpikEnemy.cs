@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpikEnemy : MonoBehaviour
 {
-    public Playr playr;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
