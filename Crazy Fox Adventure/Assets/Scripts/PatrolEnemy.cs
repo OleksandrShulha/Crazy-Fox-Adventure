@@ -41,6 +41,15 @@ public class PatrolEnemy : MonoBehaviour
                 moveLeft = true;
             }
 
+            if (transform.position.x > point1.position.x)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+
         }
     }
 }

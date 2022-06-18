@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 10f, ForceMode2D.Impulse);
             }
             if (playr.GetComponent<Playr>().CurentPlayrHealth() <= 0)
-                GetComponent<CapsuleCollider2D>().enabled = false;
+                GetComponent<Collider2D>().enabled = false;
 
         }
     }
