@@ -5,14 +5,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int damage = 1;
-    public Playr playr;
+    Playr playr;
+
+    private void Start()
+    {
+        playr = FindObjectOfType<Playr>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //если касание обьекта з тегом
         if (collision.gameObject.tag == "Player" && (collision.gameObject.GetComponent<SpriteRenderer>().color.g == 1f))
         {
-
             collision.gameObject.GetComponent<Playr>().GetPlayrHealth(-damage);
             if (playr.GetComponent<Playr>().CurentPlayrHealth() > 0)
             {
@@ -20,7 +23,6 @@ public class Enemy : MonoBehaviour
             }
             if (playr.GetComponent<Playr>().CurentPlayrHealth() <= 0)
                 GetComponent<Collider2D>().enabled = false;
-
         }
     }
 }

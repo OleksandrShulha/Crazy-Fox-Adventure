@@ -29,11 +29,20 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0
         outWeight: 0
+      - serializedVersion: 3
+        time: 0.5
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Hammer
+    path: WeaponsPlayr
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves:
@@ -50,6 +59,20 @@ AnimationClip:
       value: {fileID: 21300000, guid: 070de60f7a3a744898c6ce5c5a75c46f, type: 3}
     - time: 0.41666666
       value: {fileID: 21300000, guid: 277f13118962f44bfb91712ce22d6a40, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 08efa66d2f15c43b7aab907b0eadad41, type: 3}
+    - time: 0.5833333
+      value: {fileID: 21300000, guid: e0a9f9e4121ec410f8709af6939541fb, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: 5da2b49cc2a954b5fbf757cd85bd9021, type: 3}
+    - time: 0.75
+      value: {fileID: 21300000, guid: 62063eabe147e4c99b05f7732a7a59fc, type: 3}
+    - time: 0.8333333
+      value: {fileID: 21300000, guid: 9fb0fcaa01ed84f4caf373f05521aa2f, type: 3}
+    - time: 0.9166667
+      value: {fileID: 21300000, guid: 662d56920223e4fdb945fbaad2b10423, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: 7b78e3e81c84a4d21b3eb02deb93b90b, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -62,7 +85,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3646525184
+      path: 3284659461
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -82,12 +105,19 @@ AnimationClip:
     - {fileID: 21300000, guid: 46c8f928a04364ace841869479e8e058, type: 3}
     - {fileID: 21300000, guid: 070de60f7a3a744898c6ce5c5a75c46f, type: 3}
     - {fileID: 21300000, guid: 277f13118962f44bfb91712ce22d6a40, type: 3}
+    - {fileID: 21300000, guid: 08efa66d2f15c43b7aab907b0eadad41, type: 3}
+    - {fileID: 21300000, guid: e0a9f9e4121ec410f8709af6939541fb, type: 3}
+    - {fileID: 21300000, guid: 5da2b49cc2a954b5fbf757cd85bd9021, type: 3}
+    - {fileID: 21300000, guid: 62063eabe147e4c99b05f7732a7a59fc, type: 3}
+    - {fileID: 21300000, guid: 9fb0fcaa01ed84f4caf373f05521aa2f, type: 3}
+    - {fileID: 21300000, guid: 662d56920223e4fdb945fbaad2b10423, type: 3}
+    - {fileID: 21300000, guid: 7b78e3e81c84a4d21b3eb02deb93b90b, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 1.0833334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -115,11 +145,20 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0
         outWeight: 0
+      - serializedVersion: 3
+        time: 0.5
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Hammer
+    path: WeaponsPlayr
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []

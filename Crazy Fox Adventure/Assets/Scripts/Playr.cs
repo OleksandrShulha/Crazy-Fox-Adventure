@@ -16,17 +16,17 @@ public class Playr : MonoBehaviour
     public int maxPlayrHp = 3;
     public int curentPlayrHp;
     public bool isHit = false;
-    public Main main;
+    Main main;
+    public bool onAtakc = false;
 
-    // Start is called before the first frame update
     void Start()
     {
+        main = FindObjectOfType<Main>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         curentPlayrHp = maxPlayrHp;
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckGround();
@@ -54,6 +54,7 @@ public class Playr : MonoBehaviour
     {
         anim.SetFloat("moveX", Mathf.Abs(moveVector.x));
         anim.SetBool("onGround", isGrounded);
+        anim.SetBool("onAtack", onAtakc);
         anim.SetInteger("HP", curentPlayrHp);
     }
 
@@ -63,22 +64,26 @@ public class Playr : MonoBehaviour
         if (curentPlayrHp > 0)
         {
             moveVector.x = Input.GetAxis("Horizontal");
-            rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
-
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            if (!onAtakc)
+                rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !onAtakc)
             {
                 //rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
                 rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
             }
+            if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
+            {
+                //rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+                onAtakc = true;
+                rb.velocity = new Vector2(0, 0);
+            }
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                onAtakc = false;
+            }
         }
         else
-        {
             rb.velocity = new Vector2(0,rb.velocity.y);
-            //rb.AddForce(Vector2.up * 0);
-
-        }
-
-
     }
 
     public int CurentPlayrHealth()
@@ -99,7 +104,6 @@ public class Playr : MonoBehaviour
         if (deltaHp < 0 && (GetComponent<SpriteRenderer>().color.g == 1f))
         {
             isHit = true;
-            //StartCoroutine(ChangeColorOnHit());
             OnHit();
         }
     }
@@ -107,7 +111,6 @@ public class Playr : MonoBehaviour
     IEnumerator ChangeColorOnHit()
     {
         yield return new WaitForSeconds(0.02f);
-        Debug.Log("test");
         OnHit();
     }
 
@@ -136,10 +139,8 @@ public class Playr : MonoBehaviour
         }
     }
 
-
     void Lose()
     {
         main.GetComponent<Main>().Lose();
     }
-
 }

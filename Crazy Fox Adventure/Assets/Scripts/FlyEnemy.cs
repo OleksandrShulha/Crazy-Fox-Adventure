@@ -8,7 +8,6 @@ public class FlyEnemy : MonoBehaviour
     public float timeShoot;
     public Transform positionSpawn;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Shooting());

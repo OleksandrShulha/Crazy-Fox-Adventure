@@ -8,14 +8,13 @@ public class PatrolEnemy : MonoBehaviour
     public Transform point1;
     public Transform point2;
     bool moveLeft = true;
-    // Start is called before the first frame update
+
     void Start()
     {
         gameObject.transform.position = new Vector3(point1.position.x, point1.position.y, transform.position.z);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
-    // Update is called once per frame
     void Update()
     {
         MoveToPoint();

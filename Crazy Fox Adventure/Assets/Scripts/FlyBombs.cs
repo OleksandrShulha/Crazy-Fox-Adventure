@@ -8,6 +8,7 @@ public class FlyBombs : MonoBehaviour
     {
         StartCoroutine(SetDisableBombs());
     }
+
     IEnumerator SetDisableBombs()
     {
         yield return new WaitForSeconds(5f);
@@ -20,7 +21,6 @@ public class FlyBombs : MonoBehaviour
         StopCoroutine(SetDisableBombs());
         //gameObject.SetActive(false);
         Destroy(gameObject);
-
     }
 
 
