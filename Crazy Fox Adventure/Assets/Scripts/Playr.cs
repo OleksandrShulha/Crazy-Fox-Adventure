@@ -20,7 +20,6 @@ public class Playr : MonoBehaviour
     public int curentPlayrHp;
     bool isHit = false;
     bool onAtakc = false;
-    int typeOfWeapon = 1;
 
     public GameObject hammerBullet;
     public Transform pointHammerBullet;
