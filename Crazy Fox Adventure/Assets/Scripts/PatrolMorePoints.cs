@@ -36,4 +36,14 @@ public class PatrolMorePoints : MonoBehaviour
         else
             transform.eulerAngles = new Vector3(0, 180, 0);
     }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
 }

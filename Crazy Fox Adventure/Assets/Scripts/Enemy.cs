@@ -22,7 +22,23 @@ public class Enemy : MonoBehaviour
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 10f, ForceMode2D.Impulse);
             }
             if (playr.GetComponent<Playr>().CurentPlayrHealth() <= 0)
+            {
                 GetComponent<Collider2D>().enabled = false;
+                Invoke("offRBonPlayr", 1f);
+            }     
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "HammerBullet")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void offRBonPlayr()
+    {
+        playr.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 }

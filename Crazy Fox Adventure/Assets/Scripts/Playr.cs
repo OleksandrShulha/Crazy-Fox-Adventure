@@ -6,18 +6,24 @@ using UnityEngine;
 public class Playr : MonoBehaviour
 {
     Rigidbody2D rb;
+    Animator anim;
+    Main main;
+
+
     public Vector2 moveVector;
     public float speed;
     public float jumpHeight;
     public Transform groundChek;
     bool isGrounded;
-    Animator anim;
-    public bool faceRight = true;
+    bool faceRight = true;
     public int maxPlayrHp = 3;
     public int curentPlayrHp;
-    public bool isHit = false;
-    Main main;
-    public bool onAtakc = false;
+    bool isHit = false;
+    bool onAtakc = false;
+    int typeOfWeapon = 1;
+
+    public GameObject hammerBullet;
+    public Transform pointHammerBullet;
 
     void Start()
     {
@@ -84,6 +90,11 @@ public class Playr : MonoBehaviour
         }
         else
             rb.velocity = new Vector2(0,rb.velocity.y);
+
+        if (transform.position.y <= -11f)
+        {
+            Invoke("Lose", 3f);
+        }
     }
 
     public int CurentPlayrHealth()
@@ -142,5 +153,11 @@ public class Playr : MonoBehaviour
     void Lose()
     {
         main.GetComponent<Main>().Lose();
+    }
+
+
+    public void CreateHammerBullet()
+    {
+        Instantiate(hammerBullet, pointHammerBullet.transform.position, pointHammerBullet.transform.rotation);
     }
 }

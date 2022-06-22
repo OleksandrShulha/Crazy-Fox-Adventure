@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FlyBombs : MonoBehaviour
 {
+
     private void Start()
     {
         StartCoroutine(SetDisableBombs());

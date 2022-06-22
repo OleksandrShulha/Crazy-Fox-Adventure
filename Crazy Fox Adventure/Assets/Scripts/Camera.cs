@@ -19,8 +19,10 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playr.GetComponent<Playr>().CurentPlayrHealth() > 0)
+        if (playr.GetComponent<Playr>().CurentPlayrHealth() > 0 && playr.transform.position.x >= 0 && playr.transform.position.x <=222f)
             MoveCameraOnPlayr();
+        //else
+        //    transform.position = new Vector3(0, 0, transform.position.z);
     }
 
 

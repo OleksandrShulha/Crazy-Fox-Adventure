@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class BG : MonoBehaviour
         float dist = myCamera.transform.position.x * parallaxEffect;
         transform.position = new Vector3(startPosition + dist, transform.position.y, transform.position.z);
 
-        if(temp > startPosition + lenght)
+        if (temp > startPosition + lenght)
             startPosition += lenght;
         else if (temp < startPosition - lenght)
             startPosition -= lenght;
