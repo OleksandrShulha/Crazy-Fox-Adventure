@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     Playr playr;
     public int HP = 1;
     Animator anim;
-    int stateAnimatiom = 0;
 
     private void Start()
     {
@@ -18,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        AnimationEnemy();
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,9 +48,10 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "HammerBullet")
         {
             HP -= 1;
+            StartCoroutine(FlashingEnemyOnKick());
             if (HP <= 0)
             {
-                stateAnimatiom = 1;
+                AnimationEnemy(1);
                 GetComponent<Collider2D>().enabled = false;
                 gameObject.GetComponent<PatrolMorePoints>().SetSpeed(0);
                 Destroy(gameObject, 1f);
@@ -59,9 +59,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-    void AnimationEnemy()
+    public void AnimationEnemy(int stateAnimatiom)
     {
         anim.SetInteger("state", stateAnimatiom);
     }
+
+
+    IEnumerator FlashingEnemyOnKick()
+    {
+        int i = 1;
+        GetComponent<Collider2D>().enabled = false;
+        while (i <= 4)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+            yield return new WaitForSeconds(0.2f);
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+            yield return new WaitForSeconds(0.2f);
+            i++;
+        }
+        GetComponent<Collider2D>().enabled = true;
+    }
+
+    public int GetHP()
+    {
+        return HP;
+    }
+
 }

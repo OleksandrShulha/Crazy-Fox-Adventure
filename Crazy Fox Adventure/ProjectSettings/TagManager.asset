@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - HammerBullet
+  - ladder
+  - door
   layers:
   - Default
   - TransparentFX

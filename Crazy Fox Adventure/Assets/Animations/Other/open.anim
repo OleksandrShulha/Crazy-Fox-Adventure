@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MushroomDeathOnHammer
+  m_Name: open
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,12 +20,20 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 137fd1ef42ce847a887c5f05322bf48b, type: 3}
+      value: {fileID: 21300000, guid: 48b2d204d63de4e5ab997c30a838e4e7, type: 3}
+    - time: 0.14285715
+      value: {fileID: 21300000, guid: f6d8227e382ff4cb49ec38df8b3f41df, type: 3}
+    - time: 0.42857143
+      value: {fileID: 21300000, guid: 2f03a839c0f774c6e894055e78f80752, type: 3}
+    - time: 0.85714287
+      value: {fileID: 21300000, guid: acb2187da4c504edd9bc095d275f2e3b, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: f213d3de5d095412f9e8b2cb624e7226, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 60
+  m_SampleRate: 7
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -40,13 +48,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 137fd1ef42ce847a887c5f05322bf48b, type: 3}
+    - {fileID: 21300000, guid: 48b2d204d63de4e5ab997c30a838e4e7, type: 3}
+    - {fileID: 21300000, guid: f6d8227e382ff4cb49ec38df8b3f41df, type: 3}
+    - {fileID: 21300000, guid: 2f03a839c0f774c6e894055e78f80752, type: 3}
+    - {fileID: 21300000, guid: acb2187da4c504edd9bc095d275f2e3b, type: 3}
+    - {fileID: 21300000, guid: f213d3de5d095412f9e8b2cb624e7226, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.016666668
+    m_StopTime: 1.1428572
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

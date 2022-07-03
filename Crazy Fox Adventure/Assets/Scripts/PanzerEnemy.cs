@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class PanzerEnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    float curentSpeed;
+    int enemyHp;
+    int currentHP;
+
+    private void Start()
     {
-        
+        curentSpeed = gameObject.GetComponent<PatrolMorePoints>().GetSpeed();
+        enemyHp = gameObject.GetComponent<Enemy>().GetHP();
+        currentHP = enemyHp;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
+        currentHP = gameObject.GetComponent<Enemy>().GetHP();
+        if (collision.gameObject.tag == "HammerBullet" && currentHP + 1 == enemyHp)
+        {
+            gameObject.GetComponent<PatrolMorePoints>().SetSpeed(curentSpeed * 2);
+            gameObject.GetComponent<Enemy>().AnimationEnemy(4);
+        }
     }
+
+
+
 }

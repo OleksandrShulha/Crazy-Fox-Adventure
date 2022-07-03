@@ -20,6 +20,8 @@ public class Playr : MonoBehaviour
     public int curentPlayrHp;
     bool isHit = false;
     bool onAtakc = false;
+    public bool onClimp = false;
+    bool lvlComplete = false;
 
     public GameObject hammerBullet;
     public Transform pointHammerBullet;
@@ -61,34 +63,36 @@ public class Playr : MonoBehaviour
         anim.SetBool("onGround", isGrounded);
         anim.SetBool("onAtack", onAtakc);
         anim.SetInteger("HP", curentPlayrHp);
+        anim.SetBool("onClimp", onClimp);
+        anim.SetBool("LVLCompleted", lvlComplete);
     }
 
     private void MovePlayr()
     {
 
-        if (curentPlayrHp > 0)
+        if (curentPlayrHp > 0 && lvlComplete == false)
         {
             moveVector.x = Input.GetAxis("Horizontal");
             if (!onAtakc)
                 rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !onAtakc)
             {
-                //rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+                //rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
             }
-            if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
+            if (Input.GetKey(KeyCode.Z) && isGrounded)
             {
                 //rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
                 onAtakc = true;
                 rb.velocity = new Vector2(0, 0);
             }
-            if (Input.GetKeyUp(KeyCode.UpArrow))
+            if (Input.GetKeyUp(KeyCode.Z))
             {
                 onAtakc = false;
             }
         }
         else
-            rb.velocity = new Vector2(0,rb.velocity.y);
+            rb.velocity = new Vector2(0, rb.velocity.y);
 
         if (transform.position.y <= -11f)
         {
@@ -158,5 +162,51 @@ public class Playr : MonoBehaviour
     public void CreateHammerBullet()
     {
         Instantiate(hammerBullet, pointHammerBullet.transform.position, pointHammerBullet.transform.rotation);
+    }
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "ladder") { }
+        {
+            if (Input.GetAxis("Vertical") !=0)
+            {
+                onClimp = true;
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                transform.Translate(Vector3.up * Input.GetAxis("Vertical") * speed * 0.5f * Time.deltaTime);
+            }
+            else
+            {
+                onClimp = false;
+                rb.bodyType = RigidbodyType2D.Dynamic;
+            }
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "ladder") { }
+        {
+            onClimp = false;
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "door")
+        {
+            StartCoroutine(EnableActivitePlayr());
+        }
+    }
+
+    IEnumerator EnableActivitePlayr()
+    {
+        yield return new WaitForSeconds(0.3f);
+        lvlComplete = true;
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
+        FindObjectOfType<Door>().GetComponent<Door>().AnimationState(2);
     }
 }
