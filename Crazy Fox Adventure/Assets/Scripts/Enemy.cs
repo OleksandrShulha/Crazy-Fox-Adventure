@@ -57,6 +57,20 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject, 1f);
             }
         }
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "FreezBullet")
+        {
+            HP -= 1;
+            if (HP <= 0)
+            {
+                AnimationEnemy(2);
+                GetComponent<Collider2D>().enabled = false;
+                gameObject.GetComponent<PatrolMorePoints>().SetSpeed(0);
+                Destroy(gameObject, 1f);
+            }
+            else
+                StartCoroutine(FlashingEnemyOnKick());
+        }
+
     }
 
     public void AnimationEnemy(int stateAnimatiom)
@@ -72,9 +86,9 @@ public class Enemy : MonoBehaviour
         while (i <= 4)
         {
             GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             i++;
         }
         GetComponent<Collider2D>().enabled = true;

@@ -7,6 +7,8 @@ TagManager:
   - HammerBullet
   - ladder
   - door
+  - Bullet
+  - FreezBullet
   layers:
   - Default
   - TransparentFX

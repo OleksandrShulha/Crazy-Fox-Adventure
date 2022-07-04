@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1795883793}
   - component: {fileID: 1795883794}
+  - component: {fileID: 1753046858}
   m_Layer: 0
   m_Name: WeaponsPlayr
   m_TagString: Untagged
@@ -82,6 +83,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1753046858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795883792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5964658e8f58c43d19d5b987c6204920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSprite:
+  - {fileID: 21300000, guid: 474c5768d5528473395ad55e2292f49e, type: 3}
+  - {fileID: 21300000, guid: d87fd6c48bd6f4574a804267f436fc34, type: 3}
+  - {fileID: 21300000, guid: cc57e5696bf77461dad615421c07a74a, type: 3}
+  - {fileID: 21300000, guid: 786eb925678e349d7a38525fdde23584, type: 3}
+  - {fileID: 21300000, guid: 02a87c891d2e64f958fe1b62dac7b74c, type: 3}
+  - {fileID: 21300000, guid: af3939b9f41ce4d20bcda9f1b69891e4, type: 3}
+  - {fileID: 21300000, guid: fa93b973434bd47cb8cbfbc5f611ebee, type: 3}
 --- !u!1 &366593334013704902
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +168,7 @@ Transform:
   - {fileID: 366593334013704903}
   - {fileID: 1795883793}
   - {fileID: 3137850209960150226}
+  - {fileID: 607222256004864901}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -256,8 +278,19 @@ MonoBehaviour:
   groundChek: {fileID: 366593334013704903}
   maxPlayrHp: 3
   curentPlayrHp: 0
+  onClimp: 0
+  typeOfWeapons: 0
   hammerBullet: {fileID: 8869867235127527875, guid: 16a19519f5f624587b15a6d90b051794, type: 3}
   pointHammerBullet: {fileID: 3137850209960150226}
+  bullet:
+  - {fileID: 6402568694777824497, guid: efe0c966b780c40e48c4c6bc148f0467, type: 3}
+  - {fileID: 6402568694777824497, guid: efe0c966b780c40e48c4c6bc148f0467, type: 3}
+  - {fileID: 6402568694777824497, guid: efe0c966b780c40e48c4c6bc148f0467, type: 3}
+  - {fileID: 2480863525297592328, guid: 4500e3406039342749f61210b53f32bf, type: 3}
+  - {fileID: 2480863525297592328, guid: 4500e3406039342749f61210b53f32bf, type: 3}
+  - {fileID: 7490848544925512461, guid: e721811dc821a4d33a49f4a07a301bf0, type: 3}
+  - {fileID: 8951002266696817187, guid: 32be1fdfecf554ec8b2c7764e2903fd9, type: 3}
+  pointBullet: {fileID: 607222256004864901}
 --- !u!95 &366593334346536272
 Animator:
   serializedVersion: 3
@@ -306,4 +339,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 366593334346536285}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8394610519154393197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 607222256004864901}
+  m_Layer: 0
+  m_Name: PointWeapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &607222256004864901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394610519154393197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.19, y: -0.318, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 366593334346536285}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

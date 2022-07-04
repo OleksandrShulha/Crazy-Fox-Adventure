@@ -210,21 +210,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1795883792, guid: 446588e6ee5e44f8aa88838ea88ae33f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 366593334346536282, guid: 446588e6ee5e44f8aa88838ea88ae33f, type: 3}
       propertyPath: m_Name
       value: Playr
-      objectReference: {fileID: 0}
-    - target: {fileID: 366593334346536283, guid: 446588e6ee5e44f8aa88838ea88ae33f, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366593334346536284, guid: 446588e6ee5e44f8aa88838ea88ae33f, type: 3}
-      propertyPath: m_Color.a
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 366593334346536285, guid: 446588e6ee5e44f8aa88838ea88ae33f, type: 3}
       propertyPath: m_RootOrder
@@ -232,11 +220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366593334346536285, guid: 446588e6ee5e44f8aa88838ea88ae33f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -7.48
       objectReference: {fileID: 0}
     - target: {fileID: 366593334346536285, guid: 446588e6ee5e44f8aa88838ea88ae33f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.23
+      value: -5.2
       objectReference: {fileID: 0}
     - target: {fileID: 366593334346536285, guid: 446588e6ee5e44f8aa88838ea88ae33f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8718,7 +8706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2107526898
 SpriteRenderer:
   m_ObjectHideFlags: 0

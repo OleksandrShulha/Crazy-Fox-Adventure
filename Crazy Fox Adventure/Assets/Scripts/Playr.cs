@@ -8,6 +8,7 @@ public class Playr : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     Main main;
+    Weapons weapons;
 
 
     public Vector2 moveVector;
@@ -22,16 +23,25 @@ public class Playr : MonoBehaviour
     bool onAtakc = false;
     public bool onClimp = false;
     bool lvlComplete = false;
+    public int typeOfWeapons=0;
 
     public GameObject hammerBullet;
     public Transform pointHammerBullet;
+    public GameObject[] bullet;
+    public Transform pointBullet;
+    public bool isBulletCreate=false;
+    
+
+    Coroutine shot;
 
     void Start()
     {
         main = FindObjectOfType<Main>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        weapons = FindObjectOfType<Weapons>();
         curentPlayrHp = maxPlayrHp;
+
     }
 
     void Update()
@@ -49,6 +59,11 @@ public class Playr : MonoBehaviour
             transform.localScale *= new Vector2(-1, 1);
             faceRight = !faceRight;
         }
+    }
+
+    public bool GetDirectionPlayr()
+    {
+        return faceRight;
     }
 
     void CheckGround()
@@ -80,15 +95,20 @@ public class Playr : MonoBehaviour
                 rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
                 //rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
             }
-            if (Input.GetKey(KeyCode.Z) && isGrounded)
+            if (Input.GetKey(KeyCode.Z) && isGrounded && typeOfWeapons==0)
             {
                 //rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
                 onAtakc = true;
                 rb.velocity = new Vector2(0, 0);
             }
-            if (Input.GetKeyUp(KeyCode.Z))
+            if (Input.GetKeyUp(KeyCode.Z) && typeOfWeapons==0)
             {
                 onAtakc = false;
+            }
+            if (Input.GetKey(KeyCode.Z) && typeOfWeapons > 0 && isBulletCreate==false)
+            {
+                isBulletCreate = true;
+                shot = StartCoroutine(CreateBullet());
             }
         }
         else
@@ -208,5 +228,22 @@ public class Playr : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
         FindObjectOfType<Door>().GetComponent<Door>().AnimationState(2);
+    }
+
+    public void SetTypeWeapons(int typeOfWeapons)
+    {
+        this.typeOfWeapons = typeOfWeapons;
+    }
+
+    public int GetTypeWeapons()
+    {
+        return typeOfWeapons;
+    }
+
+    IEnumerator CreateBullet()
+    {
+        Instantiate(bullet[GetTypeWeapons()], pointBullet.transform.position, pointBullet.transform.rotation);
+        yield return new WaitForSeconds(weapons.GetComponent<Weapons>().GetTimeSpowmBullet());
+        isBulletCreate = false;
     }
 }
