@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     Playr playr;
     public int HP = 1;
     Animator anim;
+    [SerializeField] int coinEnemy;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && (collision.gameObject.GetComponent<SpriteRenderer>().color.g == 1f) && HP>0)
         {
-            collision.gameObject.GetComponent<Playr>().GetPlayrHealth(-damage);
+            collision.gameObject.GetComponent<Playr>().SetPlayrHealth(-damage);
             if (playr.GetComponent<Playr>().CurentPlayrHealth() > 0)
             {
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 10f, ForceMode2D.Impulse);
@@ -52,9 +53,7 @@ public class Enemy : MonoBehaviour
             if (HP <= 0)
             {
                 AnimationEnemy(1);
-                GetComponent<Collider2D>().enabled = false;
-                gameObject.GetComponent<PatrolMorePoints>().SetSpeed(0);
-                Destroy(gameObject, 1f);
+                DestroyEnemy();
             }
         }
         if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "FreezBullet")
@@ -63,9 +62,7 @@ public class Enemy : MonoBehaviour
             if (HP <= 0)
             {
                 AnimationEnemy(2);
-                GetComponent<Collider2D>().enabled = false;
-                gameObject.GetComponent<PatrolMorePoints>().SetSpeed(0);
-                Destroy(gameObject, 1f);
+                DestroyEnemy();
             }
             else
                 StartCoroutine(FlashingEnemyOnKick());
@@ -74,9 +71,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Rocket")
         {
             AnimationEnemy(2);
-            GetComponent<Collider2D>().enabled = false;
-            gameObject.GetComponent<PatrolMorePoints>().SetSpeed(0);
-            Destroy(gameObject, 1f);
+            DestroyEnemy();
         }
     }
 
@@ -104,6 +99,15 @@ public class Enemy : MonoBehaviour
     public int GetHP()
     {
         return HP;
+    }
+
+
+    void DestroyEnemy()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<PatrolMorePoints>().SetSpeed(0);
+        Destroy(gameObject, 1f);
+        playr.GetComponent<Playr>().SetCoin(coinEnemy);
     }
 
 }

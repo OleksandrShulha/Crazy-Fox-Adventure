@@ -9,7 +9,7 @@ public class SpikEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             int damageEnemy = collision.gameObject.GetComponent<Playr>().CurentPlayrHealth();
-            collision.gameObject.GetComponent<Playr>().GetPlayrHealth(-damageEnemy);
+            collision.gameObject.GetComponent<Playr>().SetPlayrHealth(-damageEnemy);
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }

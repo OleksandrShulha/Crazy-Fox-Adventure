@@ -30,6 +30,7 @@ public class Playr : MonoBehaviour
     public GameObject[] bullet;
     public Transform pointBullet;
     public bool isBulletCreate=false;
+    public int coinLVL = 0;
     
 
     Coroutine shot;
@@ -125,10 +126,10 @@ public class Playr : MonoBehaviour
         return curentPlayrHp;
     }
 
-    public void GetPlayrHealth(int deltaHp)
+    public void SetPlayrHealth(int deltaHp)
     {
      
-        if (curentPlayrHp > 0)
+        if (curentPlayrHp > 0 && deltaHp < 0)
             curentPlayrHp += deltaHp;
 
         if (curentPlayrHp <= 0)
@@ -139,6 +140,12 @@ public class Playr : MonoBehaviour
         {
             isHit = true;
             OnHit();
+        }
+
+        if (curentPlayrHp > 0 && deltaHp > 0)
+        {
+            if (curentPlayrHp < maxPlayrHp)
+                curentPlayrHp += deltaHp;
         }
     }
 
@@ -220,6 +227,15 @@ public class Playr : MonoBehaviour
             StartCoroutine(EnableActivitePlayr());
         }
     }
+
+    public void SetCoin(int coinCost)
+    {
+        coinLVL += coinCost;
+        Debug.Log("Coin:" + coinLVL);
+    }
+    
+
+    
 
     IEnumerator EnableActivitePlayr()
     {

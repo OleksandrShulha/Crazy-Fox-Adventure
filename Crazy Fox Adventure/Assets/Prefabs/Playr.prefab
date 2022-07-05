@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 474c5768d5528473395ad55e2292f49e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -211,7 +211,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: acad40ba45e8341e39d3383365c6db12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -291,6 +291,8 @@ MonoBehaviour:
   - {fileID: 7490848544925512461, guid: e721811dc821a4d33a49f4a07a301bf0, type: 3}
   - {fileID: 8951002266696817187, guid: 32be1fdfecf554ec8b2c7764e2903fd9, type: 3}
   pointBullet: {fileID: 607222256004864901}
+  isBulletCreate: 0
+  coinLVL: 0
 --- !u!95 &366593334346536272
 Animator:
   serializedVersion: 3
