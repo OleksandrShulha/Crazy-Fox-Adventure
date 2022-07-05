@@ -9,6 +9,7 @@ TagManager:
   - door
   - Bullet
   - FreezBullet
+  - Rocket
   layers:
   - Default
   - TransparentFX

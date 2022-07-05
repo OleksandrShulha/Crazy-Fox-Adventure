@@ -71,6 +71,13 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(FlashingEnemyOnKick());
         }
 
+        if (collision.gameObject.tag == "Rocket")
+        {
+            AnimationEnemy(2);
+            GetComponent<Collider2D>().enabled = false;
+            gameObject.GetComponent<PatrolMorePoints>().SetSpeed(0);
+            Destroy(gameObject, 1f);
+        }
     }
 
     public void AnimationEnemy(int stateAnimatiom)

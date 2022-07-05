@@ -31,7 +31,7 @@ public class PanzerEnemy : MonoBehaviour
             gameObject.GetComponent<Enemy>().AnimationEnemy(4);
         }
 
-        if (collision.gameObject.tag == "FreezBullet")
+        if (collision.gameObject.tag == "FreezBullet" && currentHP>0)
         {
             gameObject.GetComponent<PatrolMorePoints>().SetSpeed(curentSpeed * 0);
             gameObject.GetComponent<Enemy>().AnimationEnemy(3);
