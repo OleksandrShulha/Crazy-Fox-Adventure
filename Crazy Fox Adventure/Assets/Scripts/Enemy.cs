@@ -49,12 +49,14 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "HammerBullet")
         {
             HP -= 1;
-            StartCoroutine(FlashingEnemyOnKick());
             if (HP <= 0)
             {
+                StartCoroutine(FlashingEnemyOnKick(4));
                 AnimationEnemy(1);
                 DestroyEnemy();
             }
+            else
+                StartCoroutine(FlashingEnemyOnKick(3));
         }
         if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "FreezBullet")
         {
@@ -65,7 +67,7 @@ public class Enemy : MonoBehaviour
                 DestroyEnemy();
             }
             else
-                StartCoroutine(FlashingEnemyOnKick());
+                StartCoroutine(FlashingEnemyOnKick(3));
         }
 
         if (collision.gameObject.tag == "Rocket")
@@ -80,12 +82,11 @@ public class Enemy : MonoBehaviour
         anim.SetInteger("state", stateAnimatiom);
     }
 
-
-    IEnumerator FlashingEnemyOnKick()
+    IEnumerator FlashingEnemyOnKick(int quantityBlink)
     {
         int i = 1;
         GetComponent<Collider2D>().enabled = false;
-        while (i <= 4)
+        while (i <= quantityBlink)
         {
             GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
             yield return new WaitForSeconds(0.1f);
@@ -95,6 +96,7 @@ public class Enemy : MonoBehaviour
         }
         GetComponent<Collider2D>().enabled = true;
     }
+
 
     public int GetHP()
     {

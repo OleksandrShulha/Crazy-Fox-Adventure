@@ -126,6 +126,15 @@ public class Playr : MonoBehaviour
         return curentPlayrHp;
     }
 
+    public int GetMaxPlayrHealth()
+    {
+        return maxPlayrHp;
+    }
+
+
+
+
+
     public void SetPlayrHealth(int deltaHp)
     {
      
@@ -231,7 +240,12 @@ public class Playr : MonoBehaviour
     public void SetCoin(int coinCost)
     {
         coinLVL += coinCost;
-        Debug.Log("Coin:" + coinLVL);
+        main.GetComponent<Main>().SetCoinTextOnGameUI(coinLVL);
+    }
+
+    public int GetCoin()
+    {
+        return coinLVL;
     }
     
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -23,8 +24,12 @@ public class Door : MonoBehaviour
     public void AnimationState(int animParam)
     {
         anim.SetInteger("state", animParam);
+        Invoke("OpenScene", 3f);
     }
 
-
+    public void OpenScene()
+    {
+        SceneManager.LoadScene(0);
+    }
 
 }
