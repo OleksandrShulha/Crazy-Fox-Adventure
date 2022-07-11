@@ -16,6 +16,8 @@ public class Main : MonoBehaviour
     private void Start()
     {
         maxPlayrHp = playr.GetMaxPlayrHealth();
+        Time.timeScale = 1f;
+        playr.enabled = true;
     }
 
     private void Update()

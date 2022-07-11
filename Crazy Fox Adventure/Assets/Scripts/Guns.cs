@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Guns : MonoBehaviour
 {
@@ -8,6 +7,8 @@ public class Guns : MonoBehaviour
     Weapons weapons;
     [SerializeField] int typeWeapons;
     [SerializeField] float timeSpownBulet;
+    public Button btnWeaponsUI;
+
 
     void Start()
     {
@@ -37,6 +38,10 @@ public class Guns : MonoBehaviour
         {
             TakeGun();
             weapons.GetComponent<Weapons>().pickUpWeapon(typeWeapons, timeSpownBulet);
+
+            btnWeaponsUI.interactable = true;
+            btnWeaponsUI.GetComponent<Button>().onClick.Invoke();
+
         }
 
     }

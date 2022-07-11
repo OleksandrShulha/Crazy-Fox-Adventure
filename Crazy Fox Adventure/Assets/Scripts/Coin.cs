@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
     Animator anim;
     Playr playr;
 
+
     void Start()
     {
         anim = GetComponent<Animator>();

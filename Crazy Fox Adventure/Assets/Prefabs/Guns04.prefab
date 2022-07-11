@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeWeapons: 4
-  timeSpownBulet: 0.25
+  timeSpownBulet: 0.3

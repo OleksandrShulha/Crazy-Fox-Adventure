@@ -144,3 +144,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeWeapons: 1
   timeSpownBulet: 1
+  btnWeaponsUI: {fileID: 0}

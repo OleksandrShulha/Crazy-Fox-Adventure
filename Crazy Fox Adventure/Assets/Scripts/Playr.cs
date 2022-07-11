@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Playr : MonoBehaviour
 {
@@ -31,8 +32,6 @@ public class Playr : MonoBehaviour
     public Transform pointBullet;
     public bool isBulletCreate=false;
     public int coinLVL = 0;
-    
-
     Coroutine shot;
 
     void Start()
@@ -233,6 +232,7 @@ public class Playr : MonoBehaviour
     {
         if (collision.gameObject.tag == "door")
         {
+            Win();
             StartCoroutine(EnableActivitePlayr());
         }
     }
@@ -275,5 +275,16 @@ public class Playr : MonoBehaviour
         Instantiate(bullet[GetTypeWeapons()], pointBullet.transform.position, pointBullet.transform.rotation);
         yield return new WaitForSeconds(weapons.GetComponent<Weapons>().GetTimeSpowmBullet());
         isBulletCreate = false;
+    }
+
+    public void Win()
+    {
+        if (!PlayerPrefs.HasKey("lvl") || PlayerPrefs.GetInt("lvl") < SceneManager.GetActiveScene().buildIndex)
+            PlayerPrefs.SetInt("lvl", SceneManager.GetActiveScene().buildIndex);
+
+        if (PlayerPrefs.HasKey("coin"))
+            PlayerPrefs.SetInt("coin", PlayerPrefs.GetInt("coin") + GetCoin());
+        else
+            PlayerPrefs.SetInt("coin", GetCoin());
     }
 }
